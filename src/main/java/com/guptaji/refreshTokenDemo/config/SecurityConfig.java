@@ -24,7 +24,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity    // this annotation is optional
 public class SecurityConfig {
 
   @Autowired private JwtAuthenticationEntryPoint authenticationEntryPoint;

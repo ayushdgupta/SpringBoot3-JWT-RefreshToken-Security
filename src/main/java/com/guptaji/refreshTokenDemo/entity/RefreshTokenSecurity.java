@@ -9,14 +9,16 @@ public class RefreshTokenSecurity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private int id;
 
   private String refreshToken;
 
   private Instant expiryTime;
 
+  // Here 'referencedColumnName' means 'UserSecurityInfo' ka kaunsa column uthana hai and 'name'
+  // means current table mai kis naam se map krna hai.
   @OneToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "userName")
+  @JoinColumn(name = "userId", referencedColumnName = "userName")
   private UserSecurityInfo userSecurityInfo;
 
   public RefreshTokenSecurity() {
@@ -24,18 +26,18 @@ public class RefreshTokenSecurity {
   }
 
   public RefreshTokenSecurity(
-      long id, String refreshToken, Instant expiryTime, UserSecurityInfo userSecurityInfo) {
+      int id, String refreshToken, Instant expiryTime, UserSecurityInfo userSecurityInfo) {
     this.id = id;
     this.refreshToken = refreshToken;
     this.expiryTime = expiryTime;
     this.userSecurityInfo = userSecurityInfo;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
